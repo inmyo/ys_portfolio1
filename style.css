@@ -1,0 +1,517 @@
+@charset "utf-8";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    border-top: #000 solid 5px;
+    background-color: rgb(121 183 54 / 72%);
+    padding:1em 0;
+    color: rgb(40 30 30);
+    position: relative;
+    }
+
+    header h1{
+    width: 80%;
+    margin:10px auto;
+    font-size: 22px;
+    font-family: sans-serif,
+    'TsukuARdGothic-Regular','MS PGothic';
+    }
+
+    header p{
+    width: 70%;
+    font-size: 18px;
+    margin: 0px auto;
+    font-family: 'Yu Gothic UI','Hiragino Kaku Gothic ProN',
+    'ヒラギノ角ゴ ProN W3',sans-serif;
+    }
+
+.what{  
+    background-color: #4b6c3d;
+    padding: 7px 3px 0px 4px;
+    position: absolute;
+    left: 67%;
+    top: 3rem;
+    width: 98px;
+    height: 47px;
+    border-radius: 17px;
+    border: 6px outset #872acd;
+    color: #fff;
+    /* transition: all .3s; */
+}
+.what_a{
+    text-decoration: none;
+}
+.what:hover {
+    /* top:-3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); */
+    background-color: #e524d1;
+}
+.what:active{
+    color: #000;
+    
+}
+
+
+
+@media screen and (min-width: 768px){
+    header{
+    width: 100%;
+    margin: auto;
+    height: 11rem;
+    }
+
+    header h1{
+    margin-bottom: 0px;
+    font-size: 30px;
+    font-family: 'ＭＳ Ｐゴシック','TsukuARdGothic-Regular',
+    'MS PGothic',sans-serif;
+    }
+
+    header p{
+    font-size: 25px;
+    width: 77%;
+    }
+    .background{
+        background-color: black;
+        width: 100%;
+        height: 7px;
+    }
+
+    .what {
+        padding: 14px 5px 0px 14px;
+      
+        left: 80%;
+        top: 5rem;
+        width: 146px;
+        height: 73px;
+        border-radius: 38px;
+        border: 6px outset #872acd;
+        color: #fff;
+    }
+}
+
+
+/* sites */
+.sites{
+    width: 90%;
+    margin: auto;
+}
+
+h2{
+    margin: 2em 0 2em;
+    text-align: center;
+    font-size: 2em;
+    color:#1c1c1c;
+    font-family: serif,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',
+    'メイリオ',Meiryo;
+}
+
+    
+.skill{
+    color: #bd26b1;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.apli_p{
+    display: inline-block;
+    background-color: #04253f;
+    padding: 6px 15px 4px 15px;
+    margin: 0px 4px 14px 31px;
+    border-radius: 13px;
+    color: #0478c8;  
+}
+.apli_a{
+    display: inline-block;
+    background-color: #340404;
+    padding: 6px 15px 4px 15px;
+    margin: 0px 0px 14px 0px;
+    border-radius: 13px;
+    color: #f08c04;
+}
+
+.sites img{
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 2em 0 0;
+}
+
+.work{
+    border: 5px solid rgb(227 200 221);
+    max-width: 450px;
+    margin: 0 auto 2em;
+}
+
+h4,
+p{
+    padding: 0 2em 5px;
+}
+/* sitesのメディアクエリ */
+@media screen and (min-width:1010px){
+    .work{
+        margin: initial;
+        margin-bottom:2em;
+    }
+    .sites_1{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .sites_2{
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+/* キラッと光るCSSアニメーション */
+.sites_link{
+    position: relative;
+    /* 光る起点とするrelative */
+    display:inline-block;
+    overflow: hidden;
+/* overflow: hidden;←これを使わないとimg周辺にポインタをホバーしても
+    光が反応してしまう。*/
+}
+.sites_link::before{
+    content: '';
+    position: absolute;
+    /* 絶対配置で光る位置を決める。 */
+    top: 0;
+    left: -62%;
+    width: 50%;
+    height: 100%;
+    /* 光の動きに変化をつけることができる。
+    */
+    background:linear-gradient(to right,rgba(255,255,255,0)0%,
+    rgba(255, 255, 255, .3) 100%);
+    /* linear-gradient←線形の色の変化を表す。
+    radial-gradient←放射状の色の変化を表す。
+     to right←右方向に動く。*/
+     /* %の動きを確認するには、animationを遅くして、
+     透過せずに検証すると動きが分かりやすい。
+     極端に数値を変えないと何が異なっているのか分からなかった。
+     1%だと光の線が細くなり、面積が変わっている。 */
+    transform:skewX(-20deg);
+    /* skew ←水平方向（横）に動く。
+skewX()は縦のサイズは固定で横にスライドさせて傾斜をつける。
+skewY()は横のサイズは固定で縦にスライドさせて傾斜をつける。
+skew()はxy軸に従って縦横にスライドさせて傾斜をつける。*/
+}
+.sites_link:hover::before {
+    animation: shine 1.1s;
+    /* この時は疑似要素を使ってもcontentは
+    いらないみたい*/
+}
+@keyframes shine{
+    100%{
+        left:125%;
+/*もともとleft:-75%;がかかっているので、
+アニメーションの終了位置をleft:125%;に設定し、
+アニメーションさせた状態です。 */
+    }
+}
+/* キラッと光るCSSアニメーション ここまで*/
+
+
+
+/* banner */
+
+/* モーダル表示 */
+/* ①HTMLを記載する。
+②CSS:modalの位置調整
+③modal内に置くbigimg（img）の
+位置を調整する。
+④CLOSEの装飾と位置調整。*/
+
+.banner ul li a img:hover{
+    opacity: .7;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* これでmodal内が画面左上を起点に位置する。
+    CLOSEが左上に表示する。 */
+    width: 100%;
+    height: 100vh;
+    /* 画面一杯に表示する。 */
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    /* noneで非表示にしておく。 */
+}
+
+.bigimg{
+    position: absolute;
+    /* absolute ←絶対値 */
+    width: 100%;
+    top: 10%;
+    left: 16%;
+    /* imgを出してから、位置を微調整する。 */
+}
+
+.bigimg img{
+    width: 31vh;
+}
+
+.close_btn{
+    font-size: 22px;
+    position: relative;
+    right: -13%;
+    top: 28px;
+    /* CLOSEの位置決め */
+}
+
+.close_btn a{
+    color: #fff;
+    /* CLOSEの文字を白くする。 */
+    text-decoration: none;
+}
+
+#cotainer_banner li{
+    list-style-type: none;
+}
+#cotainer_banner img{
+    width: 80%;
+}
+
+/* モーダルここまで。 */
+
+/* ↓gridレイアウト */
+/*例えば、行2トラックｘ列3トラックの場合、
+rowのラインは1～3、columnのラインは1～4が存在することに
+なる。番号は1から始まること、ラインは両端にも
+あるので最大のラインの番号はトラックの数+1になる
+ことに注意。（分かりにくければ、表を書いてみる） */
+
+#cotainer_banner{
+    display: grid;
+    justify-items: center;
+    /* 210px 306px 209px; */
+    grid-template-columns: 142px 142px;
+    /* columns ←列。　これは2列になる。
+    150pxと1frの列がある。
+    fr ←gridで使用。幅を指定する。 */
+    grid-template-rows:113px 210px;
+    /* rows ←行。　これは1行。 */
+    
+    width: 94%;
+    max-width:287px;
+    margin: auto;
+}
+
+
+#item1{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+#item2{
+    
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+      
+}
+#item3{
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+}
+
+@media screen and (min-width:990px){
+#cotainer_banner{
+    grid-template-columns: 210px 306px 209px;
+    /* columns ←列。　これは2列になる。
+    150pxと1frの列がある。
+    fr ←gridで使用。幅を指定する。 */
+    grid-template-rows:478px ;
+    /* rows ←行。　これは1行。 */
+        
+    max-width:727px;
+    margin: auto;
+    }
+
+
+#item1{
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    
+}
+#item2{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+#item3{
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+}
+.bigimg img{
+    width: 40vh;
+}
+
+.close_btn {
+    top: 25px;
+    right: -14%;
+}
+}
+/*gridここまで。  */
+
+
+
+/* form */
+hr{
+    background-color: 5px ridge #03ff57;
+}
+.form{
+    width: 100%;
+    margin: auto;
+   
+}
+
+
+.form h3{
+    display: block;
+    width: 100%;
+    padding-left: 7%;
+    margin: 5px 0;        
+
+}
+
+dl{
+    width: 60%;
+    margin: auto;
+    font-family: 'Yu Gothic UI','Hiragino Kaku Gothic ProN',
+    'ヒラギノ角ゴ ProN W3',sans-serif;
+}
+
+dt{
+    margin-bottom: 8px;
+}
+
+dd{
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"]{
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+textarea{
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.submit{
+    text-align: center;
+}
+
+input[type="submit"]{
+    max-width: 210px;
+    width: 40%;
+    margin-top: 35px;
+    padding: 10px;
+    font-family: 'Yu Gothic UI','Hiragino Kaku Gothic ProN',
+    'ヒラギノ角ゴ ProN W3',sans-serif;
+}
+
+@media screen and (min-width: 768px){
+    textarea{
+        max-width: none;
+        /* HTMLで設定した大きさにする。 */
+    }   
+}
+
+
+/* footer */
+.footer_link{
+    background-color: rgb(121 183 54 / 72%);
+    text-align: center;
+    margin: 50px auto 0px;
+    padding: 9px 44%;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+
+}
+
+address{
+    padding: 5px 0;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(42, 33, 33);
+}
+
+@media screen and (min-width:720px){
+    .footer_link{
+        margin: 80px auto 50px;
+        padding: 6px 190px;
+        border-radius: 25px;
+        border-bottom: 4px solid #08643a;
+    }
+    .footer_link:active{
+        border-bottom: none;
+        transform: tranlateY(4px);
+    }
+}
+
+/* 2ページ目 */
+/* 自己紹介 */
+/* .resume{
+    display: grid;  
+} */
+
+.iam_dl_resume{
+    
+    border: 4px solid rgb(227 200 221);
+    width: 93%;
+    margin: 15px auto;
+}
+.iam_dt_resume{
+    font-weight: bold;
+    border-bottom: double 5px #dd1f70;
+    margin: 8px 0px 0px 15px;
+    display: inline-block;
+    width: 110px;
+    font-size: 17px;
+}
+
+.iam_dd_resume{
+    width: 95%;
+    margin: 13px auto;
+    font-size: 15px;
+}
+
+/* スキル */
+.iam_dl_web_skill{
+    background-color: #081432;
+    color: #fdeded;
+    padding: 15px 15px 15px 15px;
+    width: 95%;
+    margin-bottom: 5px;
+}
+.iam_dl_office_skill{
+    background-color: #1b3c0c;
+    color: #fdeded;
+    padding: 15px 15px 15px 15px;
+    width: 95%;
+    
+}
+.iam_li_skill{
+    list-style: none;
+}
